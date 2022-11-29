@@ -14,14 +14,15 @@ export class EmployeeBirthDateUpdater extends BaseCommandHandler<UpdateEmployeeB
   async handle(command: UpdateEmployeeBirthdate): Promise<void> {
     const {
       employeeId,
-      birthdate
+      birthdate,
     } = command;
 
     const employee = await this.employeeRepository.findById(employeeId);
 
+    // @ts-ignore
     employee.birthdate = moment(birthdate)
-    .utc()
-    .format();
+        .utc()
+        .format();
 
     await this.employeeRepository.save(employee);
   }
