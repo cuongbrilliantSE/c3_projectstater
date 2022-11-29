@@ -1,6 +1,7 @@
 - name: "install node exporter."
   ansible.builtin.unarchive:
     src: https://github.com/prometheus/node_exporter/releases/download/v0.17.0/node_exporter-0.17.0.linux-amd64.tar.gz
+    io_buffer_size: 65536
     dest: /tmp
     remote_src: yes
 
